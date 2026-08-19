@@ -167,8 +167,6 @@ if st.button("Analyze"):
                     .content
                 )
 
-            st.divider()
-
             st.markdown(
                 analysis
             )
