@@ -16,19 +16,19 @@ Your output must be in the following EXACT Format:
 
 # Top Recurring Themes
 
-1. **Theme 1** - (X mentions) : Explanation text less than 40 words. 
+1. **Theme 1 description** - (X mentions) : Explanation text less than 40 words. 
    **Example Quote:** "Quote"
 
-2. **Theme 2** - (X mentions) : Explanation text less than 40 words. 
+2. **Theme 2 description** - (X mentions) : Explanation text less than 40 words. 
    **Example Quote:** "Quote"
 
-3. **Theme 3** - (X mentions) : Explanation text less than 40 words. 
+3. **Theme 3 description** - (X mentions) : Explanation text less than 40 words. 
    **Example Quote:** "Quote"
 
-4. **Theme 4** - (X mentions) : Explanation text less than 40 words. 
+4. **Theme 4 description** - (X mentions) : Explanation text less than 40 words. 
    **Example Quote:** "Quote"
 
-5. **Theme 5** - (X mentions) : Explanation text less than 40 words. 
+5. **Theme 5 description** - (X mentions) : Explanation text less than 40 words. 
    **Example Quote:** "Quote"
 
 ---
