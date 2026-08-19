@@ -1,17 +1,34 @@
 import os
 import streamlit as st
+import streamlit.components.v1 as components
 import praw
 from openai import OpenAI
-from streamlit_gtag import st_gtag
+
+# --------------------------------------------------
+# PAGE SETTINGS
+# --------------------------------------------------
+
+st.set_page_config(
+    page_title="What Reddit Thinks",
+    page_icon="wrt.png",
+    layout="centered"
+)
 
 # --------------------------------------------------
 # GOOGLE ANALYTICS
 # --------------------------------------------------
 
-st_gtag(
-    key="ga_pageview",
-    id="G-Q59C5H554Q",
-    event_name="page_view"
+with open(
+    "google_analytics.html",
+    "r",
+    encoding="utf-8"
+) as f:
+
+    ga_code = f.read()
+
+components.html(
+    ga_code,
+    height=0
 )
 
 # --------------------------------------------------
@@ -25,16 +42,6 @@ REDDIT_CLIENT_ID = os.environ["REDDIT_CLIENT_ID"]
 REDDIT_CLIENT_SECRET = os.environ["REDDIT_CLIENT_SECRET"]
 
 REDDIT_USER_AGENT = os.environ["REDDIT_USER_AGENT"]
-
-# --------------------------------------------------
-# PAGE SETTINGS
-# --------------------------------------------------
-
-st.set_page_config(
-    page_title="What Reddit Thinks",
-    page_icon="wrt.png",
-    layout="centered"
-)
 
 # --------------------------------------------------
 # CLIENTS
@@ -63,7 +70,7 @@ with open(
     system_message = file.read()
 
 # --------------------------------------------------
-# HEADER
+# LOGO
 # --------------------------------------------------
 
 col1, col2, col3 = st.columns([1, 2, 1])
@@ -75,7 +82,9 @@ with col2:
         width=250
     )
 
-st.write("Understand thousands of Reddit comments in seconds.")
+st.write(
+    "Understand thousands of Reddit comments in seconds."
+)
 
 # --------------------------------------------------
 # INPUT
@@ -90,13 +99,6 @@ url = st.text_input(
 # --------------------------------------------------
 
 if st.button("Analyze"):
-
-    # Track analysis usage
-    st_gtag(
-        key="analysis_started",
-        id="G-Q59C5H554Q",
-        event_name="analysis_started"
-    )
 
     if not url:
 
@@ -150,33 +152,4 @@ if st.button("Analyze"):
                     client.chat.completions.create(
                         model="gpt-5.4-nano",
                         messages=[
-                            {
-                                "role": "system",
-                                "content": system_message
-                            },
-                            {
-                                "role": "user",
-                                "content": combined_comments
-                            }
-                        ]
-                    )
-                )
-
-                analysis = (
-                    response
-                    .choices[0]
-                    .message
-                    .content
-                )
-
-            st.divider()
-
-            st.markdown(
-                analysis
-            )
-
-        except Exception as e:
-
-            st.error(
-                f"Error: {str(e)}"
-            )
+                        
