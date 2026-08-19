@@ -82,10 +82,6 @@ with col2:
         width=250
     )
 
-st.write(
-    "Understand thousands of Reddit comments in seconds."
-)
-
 # --------------------------------------------------
 # INPUT
 # --------------------------------------------------
