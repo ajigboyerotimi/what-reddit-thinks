@@ -152,4 +152,34 @@ if st.button("Analyze"):
                     client.chat.completions.create(
                         model="gpt-5.4-nano",
                         messages=[
+                            {
+                                "role": "system",
+                                "content": system_message
+                            },
+                            {
+                                "role": "user",
+                                "content": combined_comments
+                            }
+                        ]
+                    )
+                )
+
+                analysis = (
+                    response
+                    .choices[0]
+                    .message
+                    .content
+                )
+
+            st.divider()
+
+            st.markdown(
+                analysis
+            )
+
+        except Exception as e:
+
+            st.error(
+                f"Error: {str(e)}"
+            )
                         
