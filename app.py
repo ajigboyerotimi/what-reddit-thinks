@@ -132,10 +132,6 @@ if st.button("Analyze"):
                 f"Found {len(comments)} comments"
             )
 
-            st.subheader(
-                submission.title
-            )
-
             combined_comments = "\n".join(
                 comments
             )
